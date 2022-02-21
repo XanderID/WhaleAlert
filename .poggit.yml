@@ -1,0 +1,9 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/MulqiGaming64/WhaleAlert
+build-by-default: true
+branches:
+- main
+projects:
+  WhaleAlert:
+    icon: "icons.png"
+    path: ""
+...
