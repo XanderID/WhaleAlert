@@ -1,0 +1,13 @@
+---
+name: WhaleAlert
+version: 1.0.0
+main: MulqiGaming64\WhaleAlert\WhaleAlert
+api: 4.0.0
+author: MulqiGaming64
+description: a Plugin Alert for Big pay Transaction Economys
+
+permissions:
+ whalealert.toggle:
+  default: true
+  description: Toggle On/Off Whale Alert
+...
