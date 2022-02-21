@@ -5,6 +5,9 @@ main: MulqiGaming64\WhaleAlert\WhaleAlert
 api: 4.0.0
 author: MulqiGaming64
 description: a Plugin Alert for Big pay Transaction Economys
+softdepend:
+ - BedrockEconomy
+ - EconomyAPI
 
 permissions:
  whalealert.toggle:
