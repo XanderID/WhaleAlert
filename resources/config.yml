@@ -1,0 +1,17 @@
+---
+# Your Economy plugin name
+# Available: BedrockEconomy, EconomyAPI, Auto
+economy: "Auto"
+
+# Message for WhaleAlert
+# Tag:
+# {name} Sender Name
+# {target} Target Name
+# {amount} Amount of Transferred Money
+# {economy} Name of Economy
+# {line} New Line
+message: "§a!!!!!! {amount} #{economy}, transfered from Unknow wallet to Unknow wallet"
+
+# Minimum Transferred money for WhaleAlert
+minimum: 100000
+...
