@@ -47,7 +47,7 @@ class BedrockEconomy implements Listener {
             		unset($this->onTransaction[$date]);
             	}
             }
-        ), 20 * 5, 20 * 5);
+        ), 20 * 5);
         
     	if($transaction->getType() == Transaction::TRANSACTION_TYPE_DECREMENT){
     		$this->onTransaction[$transaction->getIssueDate()][0] = [
