@@ -10,6 +10,7 @@ use pocketmine\plugin\PluginBase;
 use MulqiGaming64\WhaleAlert\Listener\EconomyAPI;
 use MulqiGaming64\WhaleAlert\Listener\BedrockEconomy;
 
+use MulqiGaming64\WhaleAlert\Async\DiscordTask;
 use MulqiGaming64\WhaleAlert\Commands\WhaleAlertCommands;
 
 class WhaleAlert extends PluginBase {
@@ -21,6 +22,9 @@ class WhaleAlert extends PluginBase {
 	
 	/** @var array $toggle */
 	public $toggle = [];
+	
+	/** @var bool $discord */
+	public $discord = false;
 
     public function onEnable(): void {
         $this->saveDefaultConfig();
@@ -33,7 +37,25 @@ class WhaleAlert extends PluginBase {
         	$this->getServer()->getPluginManager()->registerEvents(new EconomyAPI($this), $this);
 		}
 		
+		$this->checkDiscord();
 		$this->getServer()->getCommandMap()->register("WhaleAlert", new WhaleAlertCommands($this));
+    }
+    
+    public function checkDiscord(): bool{
+    	$config = $this->getConfig()->getAll()["discord"]; // Get only Discord Config
+    	if($config["enable"]){
+    		// Check for Valid Discord Webhook Urls
+			$validurl = ["https://discordapp.com/api/webhooks/", "https://discord.com/api/webhooks/"];
+			// Url prefix in Config
+			$url = substr($config["webhook"], 0, strlen($validurl[0]));
+			$urls = substr($config["webhook"], 0, strlen($validurl[1]));
+			if($url !== $validurl[0] && $urls !== $validurl[1]){
+				$this->getLogger()->warning("Discord webhook url not valid! Disabling Discord");
+				return false;
+			}
+			$this->discord = true;
+    	}
+    	return true;
     }
     
     /** @return null|string */
@@ -121,5 +143,41 @@ class WhaleAlert extends PluginBase {
     		$this->getConfig()->get("message")
     	);
     	$this->getServer()->broadcastMessage($text);
+    	if($this->discord){
+    		$this->sendToDiscord($this->removeColor($text));
+    	}
+    }
+    
+    public function removeColor(string $text): string{
+    	$text = preg_replace("/§[a-z]/", "", $text);
+    	$text = preg_replace("/§[0-9]/", "", $text);
+    	return $text;
+    }
+    
+    private function sendToDiscord(string $text): bool{
+    	$config = $this->getConfig()->getAll()["discord"]; // Get only Discord Config
+		// Preparing Webhook
+    	$discord = ["username" => $config["name"]];
+    
+    	// Preparing Message Webhook
+    	if($config["embeds"]["enable"]){
+    		$color = hexdec($config["embeds"]["color"]) ?? hexdec("80FF00"); // Color for Embeds
+    		$discord["content"] = "";
+    		$discord["embeds"][] = [
+				"title" => $config["embeds"]["title"],
+    			"description" => $text,
+    			"color" => $color,
+    			"footer" => [
+    				"text" => $config["embeds"]["footer"]
+				]
+			];
+		} else {
+			$discord["content"] = $text;
+		}
+		 
+		// Send to Discord
+		$baseJson = base64_encode(json_encode($discord));
+		$this->getServer()->getAsyncPool()->submitTask(new DiscordTask($baseJson, $config["webhook"]));
+		return true;
     }
 }
