@@ -4,7 +4,7 @@ namespace MulqiGaming64\WhaleAlert\Async;
 
 use pocketmine\scheduler\AsyncTask;
 use pocketmine\Server;
-use MulqiGaming64\WhaleAlert\Async;
+use MulqiGaming64\WhaleAlert\WhaleAlert;
 
 class DiscordTask extends AsyncTask {
 	
@@ -39,19 +39,19 @@ class DiscordTask extends AsyncTask {
 		
 		// for undefined Error
         if(curl_error($curl) !== ""){
-            $this->setResult(["error" => "Unknow error!"], true);
+            $this->setResult(["error" => "Unknow error!"]);
             return;
         }
 
         if(curl_getinfo($curl, CURLINFO_HTTP_CODE) !== 204){ // Check for Webhook Callback Error
         	if(isset($responsejson['message'])){
-            	$this->setResult(["error" => $responsejson['message']], true);
+            	$this->setResult(["error" => $responsejson['message']]);
          	   return;
          	}
-         	$this->setResult(["error" => "Unknow error!"], true);
+         	$this->setResult(["error" => "Unknow error!"]);
          	return;
         }
-        $this->setResult(["success" => true], true);
+        $this->setResult(["success" => true]);
    }
    
    public function onCompletion(): void{
@@ -59,10 +59,10 @@ class DiscordTask extends AsyncTask {
    	$data = $this->getResult();
    	if(isset($data["error"])){
 			$plugin = Server::getInstance()->getPluginManager()->getPlugin("WhaleAlert");
-      	  if($plugin === null){
+      	  if($plugin === null && !$plugin instanceof WhaleAlert){
            	 return;
       	  }
-      	 $plugin->discord = false;
+      	 $plugin->setDiscord(false);
            $plugin->getLogger()->warning($data["error"] . ", In Discord! Disabling Discord");
            return;
       }
