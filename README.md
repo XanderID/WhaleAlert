@@ -41,6 +41,22 @@ message: "§a!!!!!! {amount} #{economy}, transfered from Unknow wallet to Unknow
 
 # Minimum Transferred money for WhaleAlert
 minimum: 100000
+
+# Discord Webhook
+discord:
+ enable: false # true / false Discord Webhook
+ webhook: "" # Your webhook url including https://
+ name: "WhaleAlert" # Name Webhook
+ # If You enable Embeds Message, WhaleAlert content
+ # Will be in Embeds
+ embeds: # Embeds message Webhook
+  enable: false # For Embeds message Discord
+  # Title for Message Discord
+  title: "WhaleAlert"
+  # Color for left In HTML Color
+  color: "80FF00"
+  # Footer Text
+  footer: "Transaction from play.blabla.com"
 ...
 ```
 
