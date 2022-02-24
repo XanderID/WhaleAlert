@@ -65,7 +65,6 @@ class DiscordTask extends AsyncTask {
       	  if($plugin !== null && $plugin->isEnabled()){
            	 /** @var $plugin WhaleAlert */
       		 $plugin->setDiscord(false);
-          	 $plugin->getLogger()->warning($data["error"] . ", In Discord! Disabling Discord");
       	  }
        }
    }
