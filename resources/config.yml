@@ -17,7 +17,7 @@ minimum: 100000
 
 # Discord Webhook
 discord:
- enable: true # true / false Discord Webhook
+ enable: false # true / false Discord Webhook
  webhook: "" # Your webhook url including https://
  name: "WhaleAlert" # Name Webhook
  # If You enable Embeds Message, WhaleAlert content
