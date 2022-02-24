@@ -57,8 +57,9 @@ class DiscordTask extends AsyncTask {
    public function onCompletion(): void{
    	// Only for Error Log
    	$data = $this->getResult();
+   	$server = Server::getInstance();
    	if(isset($data["error"])){
-			$plugin = Server::getInstance()->getPluginManager()->getPlugin("WhaleAlert");
+			$plugin = $server->getPluginManager()->getPlugin("WhaleAlert");
       	  if($plugin === null && !$plugin->isEnabled()){
            	 return;
       	  }
