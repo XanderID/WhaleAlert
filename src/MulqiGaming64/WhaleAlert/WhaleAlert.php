@@ -58,6 +58,10 @@ class WhaleAlert extends PluginBase {
     	return true;
     }
     
+    public function setDiscord(bool $discord = false): void{
+    	$this->discord = $discord;
+    }
+    
     /** @return null|string */
     public function getEconomyType(){
     	$economys = strtolower($this->getConfig()->get("economy"));
@@ -161,7 +165,7 @@ class WhaleAlert extends PluginBase {
     
     	// Preparing Message Webhook
     	if($config["embeds"]["enable"]){
-    		$color = hexdec($config["embeds"]["color"]) ?? hexdec("80FF00"); // Color for Embeds
+    		$color = hexdec($config["embeds"]["color"]); // Color for Embeds
     		$discord["content"] = "";
     		$discord["embeds"][] = [
 				"title" => $config["embeds"]["title"],
