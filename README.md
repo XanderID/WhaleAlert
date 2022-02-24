@@ -17,9 +17,7 @@ Commands | Aliases | Default | Permission
 - Can Auto detect Economys Plugin
 - Customable Minimum
 - Customable Broadcast Message
-
-# To-Do
-- Broadcast to Discord
+- Broadcast to Discord can Embeds or Not
 
 # Config
 
