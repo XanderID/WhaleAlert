@@ -63,8 +63,10 @@ class DiscordTask extends AsyncTask {
    
 			$plugin = $server->getPluginManager()->getPlugin("WhaleAlert");
       	  if($plugin !== null && $plugin->isEnabled()){
-           	 /** @var $plugin WhaleAlert */
-      		 $plugin->setDiscord(false);
+      	  	if($plugin instanceof WhaleAlert){
+           	 	/** @var $plugin WhaleAlert */
+      			 $plugin->setDiscord(false);
+      		  }
       	  }
        }
    }
