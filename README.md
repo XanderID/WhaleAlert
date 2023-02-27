@@ -60,5 +60,5 @@ discord:
 
 # Additional Notes
 
-- If you find bugs or want to give suggestions, please visit [here](https://github.com/MulqiGaming64/WhaleAlert/issues)
+- If you find bugs or want to give suggestions, please visit [here](https://github.com/XanderID/WhaleAlert/issues)
 - Icons By [icons8.com](https://icons8.com)

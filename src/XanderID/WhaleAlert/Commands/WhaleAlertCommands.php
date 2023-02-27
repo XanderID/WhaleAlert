@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MulqiGaming64\WhaleAlert\Commands;
+namespace XanderID\WhaleAlert\Commands;
 
 use pocketmine\command\Command;
 use pocketmine\player\Player;
@@ -10,7 +10,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\plugin\PluginOwned;
 use pocketmine\utils\TextFormat;
 
-use MulqiGaming64\WhaleAlert\WhaleAlert;
+use XanderID\WhaleAlert\WhaleAlert;
 
 class WhaleAlertCommands extends Command implements PluginOwned {
 

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace MulqiGaming64\WhaleAlert;
+namespace XanderID\WhaleAlert;
 
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 
-use MulqiGaming64\WhaleAlert\Listener\EconomyAPI;
-use MulqiGaming64\WhaleAlert\Listener\BedrockEconomy;
+use XanderID\WhaleAlert\Listener\EconomyAPI;
+use XanderID\WhaleAlert\Listener\BedrockEconomy;
 
-use MulqiGaming64\WhaleAlert\Async\DiscordTask;
-use MulqiGaming64\WhaleAlert\Commands\WhaleAlertCommands;
+use XanderID\WhaleAlert\Async\DiscordTask;
+use XanderID\WhaleAlert\Commands\WhaleAlertCommands;
 
 class WhaleAlert extends PluginBase {
 	

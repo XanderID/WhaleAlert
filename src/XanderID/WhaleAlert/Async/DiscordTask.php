@@ -1,10 +1,10 @@
 <?php
 
-namespace MulqiGaming64\WhaleAlert\Async;
+namespace XanderID\WhaleAlert\Async;
 
 use pocketmine\scheduler\AsyncTask;
 use pocketmine\Server;
-use MulqiGaming64\WhaleAlert\WhaleAlert;
+use XanderID\WhaleAlert\WhaleAlert;
 
 class DiscordTask extends AsyncTask {
 	

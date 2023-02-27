@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace MulqiGaming64\WhaleAlert\Listener;
+namespace XanderID\WhaleAlert\Listener;
 
-use MulqiGaming64\WhaleAlert\WhaleAlert;
+use XanderID\WhaleAlert\WhaleAlert;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use cooldogedev\BedrockEconomy\event\transaction\TransactionSubmitEvent;

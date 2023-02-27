@@ -1,9 +1,9 @@
 ---
 name: WhaleAlert
 version: 1.0.2
-main: MulqiGaming64\WhaleAlert\WhaleAlert
+main: XanderID\WhaleAlert\WhaleAlert
 api: 4.0.0
-author: MulqiGaming64
+author: XanderID
 description: a Plugin Alert for Big pay Transaction Economys
 softdepend:
  - BedrockEconomy
